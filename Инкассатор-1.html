@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Проф</title>
+        <style type="text/css">
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+  font-family: 'Oswald', sans-serif;
+}
+.wrapper{
+  position: fixed;
+  top: 0;
+  /*left: -100%;*/
+  right: -100%;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  /*background: linear-gradient(90deg, #f92c78, #4114a1);*/
+  /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+ /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%);*/
+  transition: all 0.6s ease-in-out;
+}
+#active:checked ~ .wrapper{
+  /*left: 0;*/
+  right:0;
+}
+.menu-btn{
+  position: absolute;
+  z-index: 2;
+  right: 20px;
+  /*left: 20px; */
+  top: 20px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  /*color: #fff;*/
+  /*background: linear-gradient(90deg, #f92c78, #4114a1);*/
+  /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+ /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
+  transition: all 0.3s ease-in-out;
+}
+.menu-btn span,
+.menu-btn:before,
+.menu-btn:after{
+  content: "";
+  position: absolute;
+  top: calc(50% - 1px);
+  left: 30%;
+  width: 40%;
+  border-bottom: 2px solid #000;
+  transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.menu-btn:before{
+  transform: translateY(-8px);
+}
+.menu-btn:after{
+  transform: translateY(8px);
+}
+
+
+.close {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transition: background .6s;
+}
+
+/* closing animation */
+#active:checked + .menu-btn span {
+  transform: scaleX(0);
+}
+#active:checked + .menu-btn:before {
+  transform: rotate(45deg);
+  border-color: #fff;
+}
+#active:checked + .menu-btn:after {
+  transform: rotate(-45deg);
+  border-color: #fff;
+}
+.wrapper ul{
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  height: 90%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center;
+}
+.wrapper ul li{
+  height: 10%;
+  margin: 15px 0;
+}
+.wrapper ul li a{
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 500;
+  padding: 5px 30px;
+  color: #fff;
+  border-radius: 50px;
+  position: absolute;
+  line-height: 50px;
+  margin: 5px 30px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.wrapper ul li a:after{
+  position: absolute;
+  content: "";
+  background: #fff;
+   /*background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);*/
+  /*background: linear-gradient(375deg, #1cc7d0, #2ede98);*/
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 50px;
+  transform: scaleY(0);
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+.wrapper ul li a:hover:after{
+  transform: scaleY(1);
+}
+.wrapper ul li a:hover{
+  color: #1a73e8;
+}
+input[type="checkbox"]{
+  display: none;
+}
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  text-align: center;
+  width: 100%;
+  color: #202020;
+}
+.content .title{
+  font-size: 40px;
+  font-weight: 700;
+}
+.content p{
+  font-size: 35px;
+  font-weight: 600;
+}
+
+#active:checked ~ .wrapper ul li a{
+  opacity: 1;
+}
+.wrapper ul li a{
+  transition: opacity 1.2s, transform 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transform: translateX(100px);
+}
+#active:checked ~ .wrapper ul li a{
+  transform: none;
+  transition-timing-function: ease, cubic-bezier(.1,1.3,.3,1); /* easeOutBackを緩めた感じ */
+   transition-delay: .6s;
+  transform: translateX(-100px);
+}
+
+
+body{
+                color:black;
+                text-align: center;
+                text-size-adjust: 30px;
+                background-color: rgb(255, 255, 255);
+            }
+            h2{
+                font-family: Discharge Pro;
+                font-size: 70px;
+                color:rgb(1, 0, 88)
+            }
+
+
+
+</style>
+
+</head>
+
+<body>
+    <h2 class="todo_caption">Кто такой Инкассатор?</h2>
+    <h1>Инкассатор (от итальянского incassare – класть в ящик) - сотрудник банка или специализированной сторонней организации, в обязанности которого входит сбор и перевозка наличных денежных средств, как правило, в банк из кассы организации (например, торговая выручка) или обратно из банка в кассу организации (например, для выдачи заработной платы). Также инкассаторы перевозят наличные денежные средства между различными банками (например, вновь отпечатанные банкноты в хранилище банка), другие материальные ценности — особо важные документы, драгметаллы, банковские карты и пр. Наполнение банкоматов наличными (и выемка приёмных кассет в банкоматах кеш-ин и терминалах оплаты) также относится к инкассаторской деятельности. Кстати, недавно центр профориентации ПрофГид разработал точный тест на профориентацию, который сам расскажет, какие профессии вам подходят, даст заключение о вашем типе личности и интеллекте. Профессия подходит тем, кого интересует физкультура и ОБЖ</h1>\
+    <h2 class="todo_caption">Особенности профессии</h2>
+    <h1>В обязанности инкассатора входит прием денег от организаций для сдачи их в банк. Но так как деньги нужно не только принять и оформить, но и доставить в банк в целости и сохранности, в бригаду инкассаторов вместе с кассиром входят охранники и водитель. Да и сам инкассатор должен прекрасно владеть оружием и иметь соответствующую лицензию. Инкассаторам запрещаются любые отклонения от маршрута, остановки, любое общение с посторонними лицами, а также все то, что не связано с выполнением их функциональных обязанностей и нарушает правила безопасности.</h1>
+    <h2 class="todo_caption">Плюсы и минусы профессии</h2>
+    <h1>К минусам профессии относятся высокая материальная ответственность и риск для жизни. Существуют и определенные трудности. В первую очередь физическая нагрузка: часто приходится перевозить тяжелые мешки с мелочью, золото, огромные упаковки с купюрами. Хотя современный бронежилет весит всего 3-4 кг, трудно носить его целый день, в любую погоду. Прибавьте еще оружие: пистолет, а у сотрудников «Росинкаса» и автомат. Другая сложность — психологическая. Работа с крупными суммами, с огнестрельным оружием в руках весьма напряженная, поэтому инкассаторы находятся под постоянным наблюдением специалиста-психолога, который следит за ситуацией в коллективе и психологическим состоянием каждого сотрудника.</h1>
+    <h2 class="todo_caption">Место работы</h2>
+    <h1>Инкассаторы работают в государственной службе инкассации («Росинкас» при ЦБ РФ), специальных службах коммерческих банков, небанковских кредитных организациях (крупнейшая из них — «Инкахран») и частных охранных предприятиях (ЧОП).</h1>
+    <h2 class="todo_caption">Важные качества</h2>
+    <h1>Первое и самое главное - порядочность. Важны моральная устойчивость и умение уживаться в коллективе, желание постоянно совершенствоваться.</h1>
+    <h2 class="todo_caption">Обучение инкассаторов</h2>
+    <h1>Как правило, инкассатору не обязательно иметь высшее образование, тем более по какой-то определенной специальности. Плюсом будет юридическое, спортивное или военное образование, но, в конечном счете решающим оказывается другое: физическая форма и «чистая» биография. Но пройти профессиональное обучение все же придется. Один из необходимых документов для получения лицензии частного охранника - диплом (сертификат) об окончании курсов специальной подготовки. Ее можно пройти в учебных центрах «Альфа-Престиж», «Витязь» и др.</h1>
+    <h2 class="todo_caption">Оплата труда</h2>
+    <h1>Зарплата инкассатора не слишком высокая для работы, связанной с риском и опасностью для жизни: от 17 до 30 тыс. руб. (хотя сотрудник с солидным опытом иногда получает и больше, до 50 тыс. руб.). График работы может быть различным: обычная пятидневная неделя, двое суток через двое и т. д.</h1>
+    <h2 class="todo_caption">Ступеньки карьеры и перспективы</h2>
+    <h1>Сотрудники инкассаторских подразделений в отличие от работников, например, колл-центров имеют очень ограниченные возможности сделать банковскую карьеру. Перевозя деньги, вряд ли можно стать специалистом по продажам или вникнуть во все нюансы банковских продуктов. Но дорасти до руководителя инкассаторской службы вполне реально.</h1>
+    <h2 class="todo_caption">Портрет современного инкассатора</h2>
+    <h1>В кредитных организациях рассказали, что представляет собой портрет среднестатистического претендента на должность перевозчика денег. Обычно предпочтение отдается молодым людям 23—24 лет, отслужившим в армии. Специальной физической подготовки не требуется, но важно, чтобы здоровье будущих инкассаторов было хорошим — им ведь приходится носить тяжести. Желательно, чтобы у претендента был «якорь» — жена и дети. И главное — у инкассатора всегда должны «гореть глаза». И это не фигура речи: уставший человек, которому «все равно», может потерять бдительность или неправильно среагировать в экстремальной ситуации. Некоторые руководители предпочитают набирать сотрудников без опыта, которых проще научить с «нуля». Вместе с тем опыт инкассации банкоматов очень приветствуется.</h1>
+    <h2 class="todo_caption">День инкассатора</h2>
+    <h1>День инкассатора – профессиональный праздник сотрудников инкассации, отмечаемый 1 августа. В этот день в 1939 году была создана служба инкассации при Госбанке СССР.</h1>
+
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+       <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+          <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        </head>
+      
+        <body>
+          <input type="checkbox" id="active">
+          <label for="active" class="menu-btn"><span></span></label>
+          <label for="active" class="close"></label>
+          <div class="wrapper">
+            <ul>
+      <li><a href="index.html">Главное меню</a></li>
+      <li><a href="Программист-1.html">Программист</a></li>
+      <li><a href="продавец.html">Продавец</a></li>
+      <li><a href="Таможенник-1.html">Таможенник</a></li>
+      <li><a href="Пожарный-1.html">Пожарный</a></li>
+      <li><a href="Полицейский-1.html">Полицейский</a></li>
+      </ul>
+      </div>
+      <div class="content">
