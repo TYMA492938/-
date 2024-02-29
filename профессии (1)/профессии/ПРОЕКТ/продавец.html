@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Проф</title>
+        <style type="text/css">
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+  font-family: 'Oswald', sans-serif;
+}
+.wrapper{
+  position: fixed;
+  top: 0;
+  /*left: -100%;*/
+  right: -100%;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  /*background: linear-gradient(90deg, #f92c78, #4114a1);*/
+  /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+ /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%);*/
+  transition: all 0.6s ease-in-out;
+}
+#active:checked ~ .wrapper{
+  /*left: 0;*/
+  right:0;
+}
+.menu-btn{
+  position: absolute;
+  z-index: 2;
+  right: 20px;
+  /*left: 20px; */
+  top: 20px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  /*color: #fff;*/
+  /*background: linear-gradient(90deg, #f92c78, #4114a1);*/
+  /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+ /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
+  transition: all 0.3s ease-in-out;
+}
+.menu-btn span,
+.menu-btn:before,
+.menu-btn:after{
+  content: "";
+  position: absolute;
+  top: calc(50% - 1px);
+  left: 30%;
+  width: 40%;
+  border-bottom: 2px solid #000;
+  transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.menu-btn:before{
+  transform: translateY(-8px);
+}
+.menu-btn:after{
+  transform: translateY(8px);
+}
+
+
+.close {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transition: background .6s;
+}
+
+/* closing animation */
+#active:checked + .menu-btn span {
+  transform: scaleX(0);
+}
+#active:checked + .menu-btn:before {
+  transform: rotate(45deg);
+  border-color: #fff;
+}
+#active:checked + .menu-btn:after {
+  transform: rotate(-45deg);
+  border-color: #fff;
+}
+.wrapper ul{
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  height: 90%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center;
+}
+.wrapper ul li{
+  height: 10%;
+  margin: 15px 0;
+}
+.wrapper ul li a{
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 500;
+  padding: 5px 30px;
+  color: #fff;
+  border-radius: 50px;
+  position: absolute;
+  line-height: 50px;
+  margin: 5px 30px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.wrapper ul li a:after{
+  position: absolute;
+  content: "";
+  background: #fff;
+   /*background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);*/
+  /*background: linear-gradient(375deg, #1cc7d0, #2ede98);*/
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 50px;
+  transform: scaleY(0);
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+.wrapper ul li a:hover:after{
+  transform: scaleY(1);
+}
+.wrapper ul li a:hover{
+  color: #1a73e8;
+}
+input[type="checkbox"]{
+  display: none;
+}
+.content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  text-align: center;
+  width: 100%;
+  color: #202020;
+}
+.content .title{
+  font-size: 40px;
+  font-weight: 700;
+}
+.content p{
+  font-size: 35px;
+  font-weight: 600;
+}
+
+#active:checked ~ .wrapper ul li a{
+  opacity: 1;
+}
+.wrapper ul li a{
+  transition: opacity 1.2s, transform 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transform: translateX(100px);
+}
+#active:checked ~ .wrapper ul li a{
+  transform: none;
+  transition-timing-function: ease, cubic-bezier(.1,1.3,.3,1); /* easeOutBackを緩めた感じ */
+   transition-delay: .6s;
+  transform: translateX(-100px);
+}
+
+
+body{
+                color:black;
+                text-align: center;
+                text-size-adjust: 30px;
+                background-color: rgb(253, 253, 253);
+            }
+            h2{
+                font-family: Discharge Pro;
+                font-size: 70px;
+                color:rgb(1, 0, 88)
+            }
+
+
+
+</style>
+
+</head>
+
+<body>
+    <h2 class="todo_caption">Кто такой продавец?</h2>
+    <h1>Продавец — человек, работающий в торговом зале и предоставляющий ряд услуг. Например, консультирует по ассортименту, помогает в выборе товара среди аналогичных, определяет вес и цену продукта, продажа, заполнение необходимых документов. Также в его обязанности входит выкладка товара на прилавок, контроль его наличия, проверка сроков годности, качества и ценников. Продавец должен уметь работать со специальным оборудованием: кассовым аппаратом, компьютером, торговыми весами, холодильными установками, устройствами для упаковки и разделки.</h1>
+    <h2 class="todo_caption">Специализации</h2>
+    <h1>Специализация продавца зависит от вида товара, с которым он работает, и от выполняемых им функций. Принято выделять следующие специальности.</h1>
+    <h2 class="todo_caption">Продавец продовольственных товаров </h2>
+    <h1>работает с пищевыми продуктами.</h1>
+    <h2 class="todo_caption">Продавец непродовольственных товаров</h2>
+    <h1>специализируется на продаже непищевых товаров, среди которых ювелирные изделия, техника, косметика, посуда, обувь и другое.</h1>
+    <h2 class="todo_caption">Продавец-кассир</h2>
+    <h1>работает за кассой, принимает деньги или оплату банковскими картами, выдает сдачу, сканирует и пробивает товар, выдает чеки, при необходимости заполняет документацию.</h1>
+    <h2 class="todo_caption">Продавец-консультант</h2>
+    <h1>обязан хорошо разбираться в ассортименте и характеристиках товаров, рассказывать о преимуществах той или иной модели, помогать покупателям с выбором.</h1>
+    <h2 class="todo_caption">Контролер-кассир</h2>
+    <h1>отслеживает спрос покупателей, пополняет ассортимент в зале, составляет товарные отчеты. Как и продавец-кассир, работает с кассой.</h1>
+    <h2 class="todo_caption">Плюсы</h2>
+    <h1>общение с людьми; развитие коммуникабельности; высокий спрос на рынке труда; возможность работать без специального образования; развитие навыков предпринимательства.</h1>
+    <h2 class="todo_caption">Минусы</h2>
+    <h1>работа с возражениями и жалобами покупателей; зачастую совмещение нескольких должностей; многочасовые рабочие смены; работа на ногах; материальная ответственность — штрафы за недостачу вычитают из зарплаты.</h1>
+    <h2 class="todo_caption">Обучение</h2>
+    <h1>Чтобы работать продавцом, высшее образование необязательно, достаточно получить среднее специальное. Сделать это можно в техникуме или колледже. Но, как и в любой профессии, для продавцов наличие диплома вуза будет преимуществом и поможет подняться до руководящих должностей, а при желании — освоить смежную профессию.</h1>
+    <h2 class="todo_caption">Востребованность</h2>
+    <h1>Продавцы всегда востребованы. Помимо огромного количества магазинов и торговых центров, где нужны специалисты, они требуются и в интернет-пространстве - в онлайн-магазинах. Там покупатели также нуждаются в консультации и помощи в оформлении заказа.</h1>
+    <h2 class="todo_caption">Устройство на работу и карьера</h2>
+    <h1>При трудоустройстве, помимо образования, работодатель обращает внимание на опыт работы в продажах и отдает предпочтение кандидатам, имеющим стаж. Карьерный рост у продавца возможен в таком порядке:
+
+        продавец;
+        старший продавец;
+        начальник смены;
+        менеджер по закупкам;
+        администратор магазина;
+        директор магазина.
+        
+        Вероятность и темп карьерного роста зависит от места работы и того, готов ли человек к дополнительному обучению для повышения квалификации. Даже если повышение должности невозможно на конкретном месте работы, более опытный и квалифицированный продавец может рассчитывать на повышение зарплаты.
+        
+        Набравшись опыта и практических навыков, многие продавцы задумываются об открытии своего бизнеса. Полученные в учебных заведениях и в ходе работы знания способствуют им в этом.</h1>
+    <h2 class="todo_caption">Уровень зарплаты</h2>
+    <h1>Чаще всего заработная плата продавца состоит из фиксированной части и процента от продаж, который мотивирует к активной работе. Средняя заработная плата продавца составляет 15-30 тысяч рублей.</h1>
+    <h2 class="todo_caption">Перспективы в будущем</h2>
+    <h1>Профессия продавец сейчас одна из самых распространенных. Спрос на специалистов не снижается, но многие магазины пытаются автоматизировать процесс покупок. Например, создают онлайн-площадки, используют открытую выкладку товара, где можно самостоятельно выбирать нужное, внедряют кассы самообслуживания, где покупатель сам пробивает товар и оплачивает его. Еще долгое время эта профессия будет высоко востребована, так как не все торговые точки могут обеспечить себе современное оборудование. Но не исключен спад спроса на продавцов в будущем в связи с автоматизацией процессов.</h1>
+    <h2 class="todo_caption">Мнение эксперта</h2>
+    <h1>Ольга Вегера, продавец-консультант:
+
+        — Я уже 11 лет работаю продавцом-консультантом в салоне сотовой связи. Положительной стороной этой профессии считаю общение с людьми. Очень приятно осознавать, что ты в чем-то можешь быть полезной людям, например в освоении интернета, ведь в наше время так важно уметь пользоваться всеми новшествами интернет-пространства. Это бесценно, когда в салон связи приходит какая-нибудь бабушка, у которой внуки далеко, и ты ее учишь пользоваться Whatsapp, и она довольная от тебя уходит.
+        
+        Конечно и отрицательные моменты тоже есть. Например, при повышении цены на тот или иной продукт все претензии поступают, к сожалению, к продавцам, хотя никакого отношения к этому мы не имеем.
+        
+        Зарплата зависит от продаж. Получается, что ты замотивирован на то, чтобы больше предлагать и продавать, но с другой стороны, не всегда бывает много покупателей. Перед праздниками продажи растут — и заработная плата получается высокой, примерно 20 тысяч рублей. В обычные дни покупателей меньше, соответственно, зарплата выходит в районе 15-17 тысяч.
+        </h1>
+        <head>
+          <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+         <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+            <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+          </head>
+        
+          <body>
+            <input type="checkbox" id="active">
+            <label for="active" class="menu-btn"><span></span></label>
+            <label for="active" class="close"></label>
+            <div class="wrapper">
+              <ul>
+        <li><a href="index.html">Главное меню</a></li>
+        <li><a href="Программист-1.html">Программист</a></li>
+        <li><a href="Таможенник-1.html">Таможенник</a></li>
+        <li><a href="Инкассатор-1.html">Инкассатор</a></li>
+        <li><a href="Пожарный-1.html">Пожарный</a></li>
+        <li><a href="Полицейский-1.html">Полицейский</a></li>
+        </ul>
+        </div>
+        <div class="content">
+
+
+
